@@ -1,4 +1,4 @@
-# mysterious-underground
+# simple-chat-php
 Just a simple chat site with some modified things.
 
 
