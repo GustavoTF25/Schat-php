@@ -37,7 +37,7 @@ if (file_exists($arquivo)) {
                     container.innerHTML = texto;
                     container.scrollTop = container.scrollHeight;
                 });
-        }, 5000);
+        }, 3000);
     </script>
 </head>
 <body>
