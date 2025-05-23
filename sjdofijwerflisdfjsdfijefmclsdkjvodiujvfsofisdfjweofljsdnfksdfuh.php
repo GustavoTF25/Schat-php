@@ -1,28 +1,42 @@
 <?php
- $file = "chat.txt";
- $bd = fopen($file, "w");
- fwrite($bd, "");
- fclose($bd);
- $ufile = "ultima.txt";
- $ubd = fopen($ufile, "w");
- $unew = "-";
- fwrite($ubd, $unew);
- fclose($ubd);
+// Define os caminhos dos arquivos
+$chatFile = "chat.txt";
+$ultimaFile = "ultima.txt";
+
+// Tenta limpar os arquivos com segurança
+file_put_contents($chatFile, "") or die("Erro ao limpar o chat.");
+file_put_contents($ultimaFile, "-") or die("Erro ao reiniciar o horário da última mensagem.");
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Área de administracao</title>
-<script language="javascript">
-function reinicia(){
-alert("O bate-papo foi reinicializado com sucesso.");
-window.close();
-}
-</script>
+    <meta charset="UTF-8">
+    <title>Área de Administração</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function reinicia() {
+            alert("O bate-papo foi reinicializado com sucesso.");
+            window.close();
+        }
+    </script>
+    <style>
+        body {
+            background-color: #303c6d;
+            color: white;
+            font-family: Verdana, sans-serif;
+            font-size: 14px;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        hr {
+            border-color: white;
+        }
+    </style>
 </head>
-<body onLoad="javascript:reinicia()">
-<center><hr size="1">
-<font face="Verdana" size="1">Feche esta janela. </font><hr size="1">
-</center>
+<body onload="reinicia()">
+    <hr>
+    <p>Feche esta janela.</p>
+    <hr>
 </body>
 </html>

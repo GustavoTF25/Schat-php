@@ -1,41 +1,97 @@
 <?php
-$nick = $_POST['nick'];
-$cor = $_POST['cor'];
-if($nick == ""){
-echo "<script> location.href='index.php'; </script>";
-exit;
+$nick = trim($_POST['nick'] ?? '');
+$cor = $_POST['cor'] ?? 'black';
+
+if ($nick === '') {
+    header('Location: index.php');
+    exit;
 }
+
+// Sanitização básica
+$nick_safe = htmlspecialchars($nick, ENT_QUOTES, 'UTF-8');
+$cor_safe = htmlspecialchars($cor, ENT_QUOTES, 'UTF-8');
 ?>
-
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=7">
-  <meta name="viewport" content="width=100%,height=80%,initial-scale=1">
-  <title>MysteriousUnderground</title>
- 
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MisteriousUnderground</title>
+    <style>
+        body {
+            background-color: #303c6d;
+            color: white;
+            font-family: Verdana, sans-serif;
+            margin: 0;
+            padding: 1rem;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+        }
+
+        .chat-frame {
+            height: 60vh;
+            margin-bottom: 1rem;
+        }
+
+        .ultima-frame {
+            width: 300px;
+            height: 16px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 0.5rem;
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            margin-top: 0.5rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        .user-label {
+            font-weight: bold;
+            color: <?= $cor_safe ?>;
+        }
+
+        form {
+            margin-top: 1rem;
+        }
+
+        hr {
+            border-color: white;
+            margin: 1.5rem 0;
+        }
+    </style>
 </head>
+<body>
 
+    <div>
+        <iframe name="chat" src="chat.php" class="chat-frame">Seu navegador não suporta iframes.</iframe>
+        <iframe name="ultimo" src="ultima.php" class="ultima-frame">Atualize seu navegador.</iframe>
+    </div>
 
+    <hr>
 
-<body bgcolor="#303c6d"><font face="Verdana" size="2" color="white">
+    <form action="gravar.php" method="post" target="chat">
+        <div class="user-label"><?= $nick_safe ?></div>
+        <input type="hidden" name="nick" value="<?= $nick_safe ?>">
+        <input type="hidden" name="cor" value="<?= $cor_safe ?>">
+        <label for="texto">Mensagem:</label>
+        <textarea id="texto" name="texto" rows="4" placeholder="Digite sua mensagem..."></textarea>
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
 
- <div><iframe name="chat" src="chat.php" width="100%" height="80%" frameborder="0">Atualize seu navegador.</iframe><br></div><div><iframe name="ultimo" src="ultima.php" frameborder="0" width=300 height=16 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no>Favor atualizar seu navegador.</iframe></div>
-<!--FORM DE FALA-->
-<hr color="white"><form action="gravar.php" method="post" target="chat">
- <font color="<?php echo $cor ?>"><b><?php echo $nick ?></b></font color="<?php echo $cor ?>">
-<input name="nick" type="hidden" value="<?php echo $nick ?>">
-<input name="cor" type="hidden" value="<?php echo $cor ?>">
- 
-  </select> : <textarea cols="32" rows="5" type="text" name="texto" onfocus="this.value='';"></textarea> <input type="submit" value="Enviar" >
+    <form action="sair.php" method="post">
+        <input type="hidden" name="nick" value="<?= $nick_safe ?>">
+        <input type="hidden" name="cor" value="<?= $cor_safe ?>">
+        <input type="submit" value="Sair">
+    </form>
 
-</form>
-<form action="sair.php" method="post">
-<input name="nick" type="hidden" value="<?php echo $nick ?>">
-<input name="cor" type="hidden" value="<?php echo $cor ?>">
-<input type="submit" value="Sair">
-</form>
-</font>
 </body>
 </html>

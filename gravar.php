@@ -1,31 +1,41 @@
 <?php
-$nick = $_POST['nick'];
-$cor = $_POST['cor'];
-$hora = date("h:i:s");
-if($nick == ""){
-echo "<script> location.href='index.htm'; </script>";
-exit;
-}
-$texto = $_POST['texto']; 
+date_default_timezone_set('America/Sao_Paulo');
 
+$nick = $_POST['nick'] ?? '';
+$cor = $_POST['cor'] ?? 'black';
+$texto = $_POST['texto'] ?? '';
+$hora = date("H:i:s");
+
+// Evita entradas vazias
+if (trim($nick) === '') {
+    header("Location: index.php");
+    exit;
+}
+
+// Validação mínima
+$nick = strip_tags($nick);
+$texto = htmlspecialchars(trim($texto), ENT_QUOTES, 'UTF-8');
+
+// Verifica se é um moderador (HTML já inserido no nick)
+$isAdmin = stripos($nick, 'Moderador') !== false;
+
+// Abre o arquivo
 $abre = fopen("chat.txt", "a");
-
-if($abre) {
-
-fwrite($abre,"<b><font color={$cor}>{$nick}</font color={$cor}>, as {$hora}</i>:</b> {$texto} <br>");
-
+if ($abre) {
+    // Formatando a mensagem
+    if ($isAdmin) {
+        // Admin já tem o <b> ou <font> no nome, então usamos como está
+        fwrite($abre, "{$nick} <i>às {$hora}:</i> {$texto}<br>\n");
+    } else {
+        fwrite($abre, "<b><span style=\"color:{$cor};\">{$nick}</span></b> <i>às {$hora}:</i> {$texto}<br>\n");
+    }
+    fclose($abre);
 }
 
-fclose($abre);
+// Atualiza hora da última mensagem
+file_put_contents("ultima.txt", $hora);
 
- // marca hora da ultima mensagem
-
-$ultima = fopen("ultima.txt", "w");
-
-fwrite($ultima, $hora);
-
-fclose($ultima);
-
+// Redireciona de volta ao chat
+header("Location: chat.php");
+exit;
 ?>
-
-<meta http-equiv="refresh" content="0; url=chat.php">

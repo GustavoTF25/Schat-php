@@ -1,4 +1,6 @@
-<b><font color=red>LightningQuantum86</font color=red>, as 02:52:46</i>:</b> sdasd <br><b><font color=black>Aureo</font color=black><i> entrou no chat.</i></b><br><b><font color=black>Anon</font color=black><i> entrou no chat.</i></b><br><b><font color=black>Anon</font color=black>, as 04:25:43</i>:</b> vish
- <br><b><font color=black>Anon</font color=black>, as 04:25:50</i>:</b> 
- <br><b><font color=black>Anon</font color=black><i> saiu do chat.</i></b><br><b><font color=black>Sora</font color=black><i> entrou no chat.</i></b><br><b><font color=black>Sora</font color=black>, as 08:45:14</i>:</b> que isso
- <br><b><font color=black>Sora</font color=black>, as 08:45:19</i>:</b> ih ala <br><b><font color=black>Sora</font color=black><i> saiu do chat.</i></b><br><b>Alguem esta espiando a conversa!</b><br>
+Moderador <i>às 19:53:38:</i> teste<br>
+Moderador <i>às 19:53:51:</i> &lt;a href=&#039;#&#039; onclick=&#039;window.open(\<br>
+<i><span style='color:gray'>[19:55:47] Alguém espiou a conversa.</span></i><br>
+<b><span style='color:red'>teste</span><i> entrou no chat.</i></b><br>
+<b><span style='color:red'>teste</span><i> saiu do chat às 22:56:28.</i></b><br>
+<i><span style='color:gray'>[19:58:27] Alguém espiou a conversa.</span></i><br>
