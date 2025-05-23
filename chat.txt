@@ -4,3 +4,6 @@ Moderador <i>às 19:53:51:</i> &lt;a href=&#039;#&#039; onclick=&#039;window.ope
 <b><span style='color:red'>teste</span><i> entrou no chat.</i></b><br>
 <b><span style='color:red'>teste</span><i> saiu do chat às 22:56:28.</i></b><br>
 <i><span style='color:gray'>[19:58:27] Alguém espiou a conversa.</span></i><br>
+<i><span style='color:gray'>[20:16:43] Alguém espiou a conversa.</span></i><br>
+<b><span style='color:black'>Gustavo</span><i> entrou no chat.</i></b><br>
+<b><span style="color:black;">Gustavo</span></b> <i>às 20:17:14:</i> teste<br>
